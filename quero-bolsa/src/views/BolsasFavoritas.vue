@@ -4,6 +4,7 @@
       <div class="itens-rows">
         <h1 class="text-black">Bolsas favoritas</h1>
         <h5>Adicione os cursos e faculdades de seu interesse e receba atualizações com as melhores ofertas.</h5>
+        <h5>Adicione os cursos e faculdades de seu interesse e receba atualizações com as melhores ofertas.</h5>
       </div>
     </div>
     <div class="col">
