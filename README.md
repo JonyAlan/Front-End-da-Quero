@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # quero-bolsa
 
 ## Project setup
@@ -128,3 +129,7 @@ A estrutura do JSON é a seguinte:
 * Persistir a lista de favoritos no browser do cliente;
 * Aplicar animações de transição.
 
+=======
+# Front-End-da-Quero
+Prtojeto Front End da Quero Bolsa
+>>>>>>> dev
