@@ -37,6 +37,7 @@
         </div>
         
       </div>
+
       <div class="header-menu">
         <!-- <div class="brand-logo-header">  -->
         <div class="col">
@@ -49,6 +50,7 @@
           <p>Bolsas favoritas</p>
         </div>
       </div>
+ 
     </div>
   </header>
 </template>
@@ -183,7 +185,6 @@ export default {
 .header {
   display: flex;
   justify-content: space-between; 
-  padding: 0 4rem;
   align-items: center; 
   height: 70px;
   background-color: white;

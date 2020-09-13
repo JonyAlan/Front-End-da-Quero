@@ -10,6 +10,9 @@ body {
   line-height: 1.4rem;
 }
 
+.footer-networks, .header, .container {  
+  padding: 0 4rem;  
+} 
 
 .text-black{
   color: #1F2D30;
@@ -18,9 +21,10 @@ body {
   color: #007A8D;
 }
 
-.container {  
-  padding: 0 4rem;  
+.pointer{
+  cursor: pointer;
 }
+
 
 .col {
   display: flex;
@@ -93,15 +97,12 @@ body {
 .footer-networks {
   background-color: #007A8D;
   display: flex;
-  justify-content: space-between; 
-  padding: 0 4rem;
+  justify-content: space-between;  
   align-items: center; 
   height: 100px;
   color: white;
 }
-.footer-networks > i{
-  font-size: 25px;
-}
+ 
 .footer {
   color: white;
 }
@@ -109,10 +110,11 @@ body {
 .itens-rows > p{
   display: flex;  
   font-weight: bold;
-  font-size: 14px;
+  font-size: .9rem;
   align-items: center;  
   margin: 0px 13px; 
 }
 .itens-rows > p:first-child {
-  font-size: 16px;
+  font-size: 1rem;
+  /* font-size: 16px; */
 } 
