@@ -1,0 +1,118 @@
+/*================================================================================
+	Version: 1.0
+	Author: Jony Alan 
+================================================================================*/
+
+  
+body {
+  margin:0;
+  padding:0; 
+  line-height: 1.4rem;
+}
+
+
+.text-black{
+  color: #1F2D30;
+}
+.text-blue{
+  color: #007A8D;
+}
+
+.container {  
+  padding: 0 4rem;  
+}
+
+.col {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+}
+.center{
+  justify-content: center; 
+}
+.left{
+  justify-content: flex-start; 
+}
+.right{
+  justify-content: flex-end; 
+}
+.just-center{
+  display: flex;  
+  align-items: center;  
+}
+
+
+
+/* testes */
+
+.red{
+  background-color: red;
+}
+.yellow{
+  background-color: yellow;
+}
+.green{
+  background-color: green;
+}
+
+
+
+@media only screen and (max-width: 992px) {
+  .brand-logo-titulo {
+    color: #0071BC;
+  }		
+ 
+}
+ 
+.imp-sim-input {
+		background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    /* margin: 0px 0px 0px 0px !important; */
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all 0.3s;
+}
+ 
+/* Customer for  footer */
+.page-footer{
+  margin-top:calc(10% + 60px);
+}
+.footer-copyright {
+  background-color: #18ACC4;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.footer-networks {
+  background-color: #007A8D;
+  display: flex;
+  justify-content: space-between; 
+  padding: 0 4rem;
+  align-items: center; 
+  height: 100px;
+  color: white;
+}
+.footer-networks > i{
+  font-size: 25px;
+}
+.footer {
+  color: white;
+}
+
+.itens-rows > p{
+  display: flex;  
+  font-weight: bold;
+  font-size: 14px;
+  align-items: center;  
+  margin: 0px 13px; 
+}
+.itens-rows > p:first-child {
+  font-size: 16px;
+} 
