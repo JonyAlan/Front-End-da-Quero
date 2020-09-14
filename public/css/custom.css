@@ -1,0 +1,206 @@
+/*================================================================================
+	Version: 1.0
+	Author: Jony Alan 
+================================================================================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  border: none;
+}
+
+body {
+  margin:0;
+  padding:0; 
+  line-height: 1.4rem;
+}
+
+.footer-networks, .header, .container {  
+  padding: 0 4rem;  
+} 
+
+.text-black{
+  color: #1F2D30;
+}
+.text-blue{
+  color: #007A8D;
+}
+.text-green{
+  color: #0FA866;
+}
+ 
+.pointer{
+  cursor: pointer;
+}
+
+
+.col {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+}
+.center{
+  justify-content: center; 
+}
+.left{
+  justify-content: flex-start; 
+}
+.right{
+  justify-content: flex-end; 
+}
+.just-center{
+  display: flex;  
+  align-items: center;  
+}
+
+
+
+/* testes */
+
+.red{
+  background-color: red;
+}
+.yellow{
+  background-color: yellow;
+}
+.green{
+  background-color: green;
+}
+
+
+/* Styles for Modal */ 
+.modal { 
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba( 31, 45, 48, 0.88 ); /* equivalente á #1F2D30 com 88% de opacidade. */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fbfbfb;
+  opacity: 1;
+  margin: auto;
+  margin-bottom: 100px;
+  border: 1px solid #888;
+  padding: 1.8rem;
+  width: 59%;
+  min-width: 550px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* The Close Modal Button */
+.close {
+  position: relative;
+  color: white;
+  float: right;
+  font-size: 4rem !important;
+  top: -65px;
+  left: 35px;
+  cursor: pointer;
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-header {
+  margin-bottom: 20px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+
+
+@media only screen and (max-width: 992px) {
+  .brand-logo-titulo {
+    color: #0071BC;
+  }		
+ 
+}
+ 
+.imp-sim-input {
+		background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    /* margin: 0px 0px 0px 0px !important; */
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all 0.3s;
+}
+ 
+/* Customer for  footer */
+.page-footer{
+  margin-top:calc(10% + 60px);
+}
+.footer-copyright {
+  background-color: #18ACC4;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.footer-networks {
+  background-color: #007A8D;
+  display: flex;
+  justify-content: space-between;  
+  align-items: center; 
+  height: 100px;
+  color: white;
+}
+ 
+.footer {
+  color: white;
+}
+
+.itens-rows > p{
+  display: flex;  
+  font-weight: bold;
+  font-size: .9rem;
+  align-items: center;  
+  margin: 0px 13px; 
+}
+.itens-rows > p:first-child {
+  font-size: 1rem;
+  /* font-size: 16px; */
+} 
