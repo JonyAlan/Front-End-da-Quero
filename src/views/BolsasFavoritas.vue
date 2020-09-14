@@ -21,27 +21,30 @@
               </select>
             </div>
             <div class="half-row">
-              <label for="cidade">Selecione sua cidade:</label>
-              <select name="cidade" id="cidade">
-                <option value="1">São José dos Campos</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+              <label for="selectCurso">Selecione o curso de sua preferência:</label>
+              <select name="selectCurso" id="selectCurso">
+                <option value="1">ADS</option> 
               </select>
             </div>
           </div>
           <div class="row">
             <div class="half-row spacing">
               <label>Como você quer estudar ?</label>
-              <div class="row">
-                <div class="checkbox">
-                  <input type="checkbox" name="chkPresencial" id="chkPresencial" />
-                  <label for="chkPresencial" id="chkPresencial-label">Presencial</label>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox" name="chkDistancia" id="chkDistancia" />
-                  <label for="chkDistancia" id="chkDistancia-label">A distância</label>
-                </div>
+              <div class="row" style="position: relative;">
+                <div style="position: relative; width: 120px;">
+                  <label class="checkbox">
+                    <input id="presencial" name="presencial" type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                    <label for="presencial" class="checkLugar">Presencial</label>  
+                  </label>
+                </div> 
+                <div style="position: relative;">
+                  <label class="checkbox">
+                    <input id="distancia" name="distancia" type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                    <label for="distancia" class="checkLugar">A distância</label> 
+                  </label>
+                </div> 
               </div>
             </div>
             <div class="half-row">
@@ -71,10 +74,11 @@
           <div v-for="(item, index) in listCursos" :key="item.campus.name+index">
             <label class="row just-between divider" :for="item.campus.name+index">
               <div >
-                <div class="checkbox checkImage">
+                <div class="checkbox checkImage ">
                   <input class="chkCursos" type="checkbox" :name="item.campus.name+index" :id="item.campus.name+index" :value="item" v-model="checkedCursos"  />
+                  <span class="checkmark"></span>
                   <img class="cursoImgLogo" :src="item.university.logo_url" alt="Selecionar curso" />
-                </div>
+                </div> 
               </div>
               <div class="text-blue">
                 <p><b>Administração</b></p>
@@ -126,8 +130,8 @@
         <div class="dividerCard"></div>
         <div>
           <h5> <b> Mensalidade com o Quero Bolsa: </b> </h5>
-          <h5 class="underline"> R$ {{String(item.full_price).replace('.',',')}} </h5>
-          <h4 class="text-inline" > <span class="text-green"> R$ {{String(item.price_with_discount).replace('.',',')}} </span> <h5 class="text-inline">/mês </h5></h4>
+          <h5 class="underline"> {{ item.full_price.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}) }} </h5>
+          <h4 class="text-inline" > <span class="text-green"> {{item.price_with_discount.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"})}} </span> <h5 class="text-inline">/mês </h5></h4>
         </div>
         <div class="modal-footer">
           <button @click="closeModal()" class="button cancelar" type="submit" value="Submit" >Excluir</button> 
@@ -187,6 +191,54 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  
+/* Hide the browser's default checkbox */
+input[type="checkbox" i] {
+   opacity: 0; 
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: transparent;
+  border: solid #18ACC4 1px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* When the checkbox is checked, add a blue background */
+input:checked ~ .checkmark {
+  background-color: #007a8d;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute; 
+  display: none;
+}
+
+/* Show the checkmark when checked */
+input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkmark:after {
+  left: 5px;
+  width: 3px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+ 
 .inputRange {
   flex: 1;
 }
@@ -289,6 +341,10 @@ label {
 }
 .half-row > label {
   text-transform: uppercase;
+  white-space: nowrap;
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .checkbox {
   margin-top: 10px;
@@ -321,12 +377,18 @@ label {
 .valor {
   font-weight: normal;
 }
+.checkLugar {
+  font-weight: normal;
+  position: relative;
+  top: 7px
+}
 
 select {
   border: 1px solid #cec5c5;
   border-radius: 5px;
   padding: 10px;
   font-size: 0.9rem;
+  text-overflow: ellipsis
 } 
 
 .selectOrdenacao {
