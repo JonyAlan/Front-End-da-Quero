@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router"; 
 import Home from "./views/Home.vue"; 
 import BolsasFavoritas from "./views/BolsasFavoritas.vue"; 
+import PreMatriculas from "./views/PreMatriculas.vue"; 
 // import store from "./store";
 // import axios from 'axios';
 
@@ -92,6 +93,12 @@ export default new Router({
       path: "/BolsasFavoritas",
       name: "BolsasFavoritas",
       component: BolsasFavoritas,
+      // beforeEnter: autenticado
+    },
+    {
+      path: "/PreMatriculas",
+      name: "PreMatriculas",
+      component: PreMatriculas,
       // beforeEnter: autenticado
     },
     // Meus Documentos ---------------------------------
