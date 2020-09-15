@@ -71,7 +71,7 @@
           </div>
 
           <div class="row just-between">
-            <div class="half-row spacing">
+            <div>
               <label>Resultado:</label>
             </div>
             <!-- Ordenação, não será implementada por falta de tempo -->
@@ -104,8 +104,8 @@
           </div>
         </form>
         <div class="modal-footer">
-          <button @click="closeModal()" class="button cancelar" type="submit" value="Submit" >Cancelar</button> 
-          <button @click="addListCursos()" :class="`button add  ${checkedCursos.length > 0 ? 'enableButton' : ''} `" type="submit" value="Submit">Adicionar bolsa(s)</button>
+          <button @click="closeModal()" class="button btnModal cancelar" type="submit" value="Submit" >Cancelar</button> 
+          <button @click="addListCursos()" :class="`button btnModal add  ${checkedCursos.length > 0 ? 'enableButton' : ''} `" type="submit" value="Submit">Adicionar bolsa(s)</button>
         </div>
       </div>
     </div>
@@ -435,6 +435,9 @@ select {
   font-size: 0.9rem;
   font-weight: bold;
   margin: 15px 0;
+}
+.btnModal {
+  padding: 1rem 0.8rem;
 }
 .cancelar {
   color: #007a8d;
