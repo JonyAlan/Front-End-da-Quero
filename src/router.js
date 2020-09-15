@@ -9,10 +9,19 @@ Vue.use(Router);
 export default new Router({
   routes: [
 
+    // {
+    //   path: "/",
+    //   name: "home",
+    //   component: Home,
+    // },
     {
-      path: "/",
-      name: "home",
-      component: Home,
+      path: '*',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: "/index.html",
+      redirect: "/" 
     },
     {
       path: "/BolsasFavoritas",
