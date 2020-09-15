@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <!-- The Modal -->
-    <div v-show="modalShow" id="addBolsaModal" class="modal">
-      <!-- Modal content -->
+    <!-- Início do modal com seus componentes -->
+    <div v-show="modalShow" id="addBolsaModal" class="modal"> 
       <div class="modal-content">
         <div class="modal-header">
           <span @click="closeModal()" class="close">&times;</span>
@@ -13,17 +12,32 @@
           <div class="row">
             <div class="half-row spacing">
               <label for="cidade">Selecione sua cidade:</label>
-              <select name="cidade" id="cidade">
-                <option value="1">São José dos Campos</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+              <select name="cidade" id="cidade" v-model="cidadeSelected">
+                <option value="São José dos Campos">São José dos Campos</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Fortaleza">Fortaleza</option>
+                <option value="Jacareí">Jacareí</option>
               </select>
             </div>
             <div class="half-row">
               <label for="selectCurso">Selecione o curso de sua preferência:</label>
-              <select name="selectCurso" id="selectCurso">
-                <option value="1">ADS</option> 
+              <select name="selectCurso" id="selectCurso" v-model="cursoSelected">
+                <option value="Engenharia Mecânica">Engenharia Mecânica</option> 
+                <option value="Jornalismo">Jornalismo</option> 
+                <option value="Biomedicina">Biomedicina</option> 
+                <option value="Arquitetura e Urbanismo">Arquitetura e Urbanismo</option> 
+                <option value="Propaganda e Marketing">Propaganda e Marketing</option> 
+                <option value="Marketing">Marketing</option> 
+                <option value="Ciência da Computação">Ciência da Computação</option> 
+                <option value="Gastronomia">Gastronomia</option> 
+                <option value="Jogos Digitais">Jogos Digitais</option> 
+                <option value="Ciências Econômicas">Ciências Econômicas</option> 
+                <option value="Sistemas de Informação">Sistemas de Informação</option> 
+                <option value="Gestão de Recursos Humanos">Gestão de Recursos Humanos</option> 
+                <option value="Farmácia">Farmácia</option> 
+                <option value="Administração">Administração</option> 
+                <option value="História">História</option> 
+                <option value="Educação Física">Educação Física</option> 
               </select>
             </div>
           </div>
@@ -60,18 +74,16 @@
             <div class="half-row spacing">
               <label>Resultado:</label>
             </div>
+            <!-- Ordenação, não será implementada por falta de tempo -->
             <div>
               <label for="ordenacao">Ordenar por</label>
               <select class="selectOrdenacao" name="ordenacao" id="ordenacao">
-                <option value="1">São José dos Campos</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+                <option value="1">São José dos Campos</option> 
               </select>
             </div>
           </div>
-
-          <div v-for="(item, index) in listCursos" :key="item.campus.name+index">
+          <!-- Itens da gride de cursos filtrados -->
+          <div v-for="(item, index) in listCursos" :key="item.campus.name+index" v-show="cidadeSelected == item.campus.city">
             <label class="row just-between divider" :for="item.campus.name+index">
               <div >
                 <div class="checkbox checkImage ">
@@ -80,9 +92,9 @@
                   <img class="cursoImgLogo" :src="item.university.logo_url" alt="Selecionar curso" />
                 </div> 
               </div>
-              <div class="text-blue">
-                <p><b>Administração</b></p>
-                <span class="text-black" >Bacharelado</span>
+              <div class="text-blue text-center">
+                <p><b>{{item.course.name}}</b></p>
+                <span class="text-black" >{{item.course.level}}</span>
               </div>
               <div>
                 <p> Bolsa de <span class="text-green">{{parseInt(item.discount_percentage)}}%</span> </p>
@@ -98,28 +110,27 @@
       </div>
     </div>
 
-    <div class="col">
-      <div class="itens-rows">
-        <h1 class="text-black">Bolsas favoritas</h1>
-        <h5>Adicione os cursos e faculdades de seu interesse e receba atualizações com as melhores ofertas.</h5>
-      </div>
+ <!-- Início da componente Bolsas Favoritas -->
+    <div class="itens-rows">
+      <h1 class="text-black">Bolsas favoritas</h1>
+      <h5>Adicione os cursos e faculdades de seu interesse e receba atualizações com as melhores ofertas.</h5>
     </div>
+ <!-- Início dos cards -->
     <div class="row rowCard">
-
       <div class="card pointer" @click="openModal()">
-        <br> <br>
+        <br><br>
         <div>
           <img style="height: 55px; width: 55px;" src="../../public/imagens/icons/add-blue.png" alt="Adicionar bolsa" />
         </div>
         <div>
           <h4> <b>Adicionar curso</b> </h4>
           <h5> Clique para adicionar bolsas de cursos do seu interesse </h5>
-          <br> <br>
+          <br><br>
         </div>
       </div>
-
-      <div  class="card" v-for="(item, index) in listCursosSelected" :key="item.campus.name+index">
-        <div  class="divImgLogo" >
+      <!-- Lista de cards, o desabilitado ainda não foi implementado -->
+      <div class="card" v-for="(item, index) in listCursosSelected" :key="item.campus.name+index">
+        <div class="divImgLogo" >
           <img class="cursoImgLogo" :src="item.university.logo_url" alt="Logo da faculdade" />
         </div>
         <div class="dividerCard"></div>
@@ -134,7 +145,7 @@
           <h4 class="text-inline" > <span class="text-green"> {{item.price_with_discount.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"})}} </span> <h5 class="text-inline">/mês </h5></h4>
         </div>
         <div class="modal-footer">
-          <button @click="closeModal()" class="button cancelar" type="submit" value="Submit" >Excluir</button> 
+          <button @click="removeItem(index)" class="button cancelar" type="submit" value="Submit" >Excluir</button> 
           <button @click="addListCursos()" :class="`button add  ${checkedCursos.length > 0 ? 'enableButton' : ''} `" type="submit" value="Submit">Ver oferta</button>
         </div>
       </div>
@@ -152,13 +163,21 @@ export default {
       valor: "10.0000",
       modalShow: false,
       listCursos: json,
+      cidadeSelected: 'São José dos Campos',
+      cursoSelected: '',
+
+      listCidades:[],
+      arrayCursos:[],
+
       checkedCursos: [],
       listCursosSelected: []
     };
   },
   mounted() {
     var self = this;
-    var modal = document.getElementById("addBolsaModal"); 
+    var modal = document.getElementById("addBolsaModal");
+    
+    this.arrayCursos = [];
 
     modal.addEventListener("click", function (e) {
       if (e.target == this) {
@@ -185,6 +204,9 @@ export default {
         this.modalShow= false;
       }
     },
+    removeItem: function (index) {
+        this.checkedCursos.splice(index,1)
+    },
   },
 };
 </script>
@@ -209,25 +231,17 @@ input[type="checkbox" i] {
   border-radius: 3px;
   cursor: pointer;
 }
-
-/* When the checkbox is checked, add a blue background */
 input:checked ~ .checkmark {
   background-color: #007a8d;
 }
-
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute; 
   display: none;
 }
-
-/* Show the checkmark when checked */
 input:checked ~ .checkmark:after {
   display: block;
 }
-
-/* Style the checkmark/indicator */
 .checkmark:after {
   left: 5px;
   width: 3px;
@@ -238,65 +252,107 @@ input:checked ~ .checkmark:after {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
- 
-.inputRange {
-  flex: 1;
+.checkbox {
+  margin-top: 10px;
 }
-
-h1 {
-  list-style-type: none;
-  padding: 0;
-  text-align: start;
-  margin: 0.5em 0;
-}
-h4 {
-  margin:  0;
-}
-h5 {
+.checkbox > label {
+  margin: 0 10px;
   font-weight: normal;
-  font-size: .75rem;
 }
-span {
-  line-height: 0rem;
-}
-.text-blue > span{
-  font-size: .8rem;
+.checkImage {
+  position: relative;
+  width: 180px;
+  display: flex; 
 }
 
-.just-between {
-  justify-content: space-between;
-  align-items: center;
-}
-.divider {
-  border-top: 3px solid #eeefef;
-  margin-right: 10px;
+/* Create a custom for Modal */ 
+.modal { 
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
   width: 100%;
-  height: 80px;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba( 31, 45, 48, 0.88 ); /* equivalente á #1F2D30 com 88% de opacidade. */
+}
+.modal-content {
+  position: relative;
+  background-color: #fbfbfb;
+  opacity: 1;
+  margin: auto;
+  margin-bottom: 100px;
+  border: 1px solid #888;
+  padding: 1.8rem;
+  width: 59%;
+  min-width: 550px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+.close {
+  position: relative;
+  color: white;
+  float: right;
+  font-size: 4rem !important;
+  top: -65px;
+  left: 35px;
   cursor: pointer;
 }
-.dividerCard {
-  border-top: 3px solid #eeefef;
-  margin: 10px;
-  width: 100%; 
-  height: 3px;
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
 }
-.underline{
-  text-decoration: line-through;
-} 
-.text-inline{
-  display: inline-block;
-} 
-
-.rowCard{
- margin: 10px -10px;
+.modal-header {
+  margin-bottom: 20px;
 }
+.cursoImgLogo {  
+  width: 100%;
+  max-height: 60px; 
+  object-fit: contain;
+  align-self: flex-start;
+}
+.divImgLogo {   
+  height: 60px;  
+}
+.chkCursos {
+  align-self: center; 
+  height: 20px;
+  margin-right: 20px;
+}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+  
 
-.card {
+ /* Creat custom of Cards */
+ .card {
   display: flex;
   flex-direction: column;
   padding: .8rem;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 25%;
@@ -307,9 +363,17 @@ span {
   margin-bottom: 40px;
   text-align: center;
 }
-
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.dividerCard {
+  border-top: 3px solid #eeefef;
+  margin: 10px;
+  width: 100%; 
+  height: 3px;
+}
+.rowCard {
+ margin: 20px -10px;  
 }
  
 form {
@@ -317,20 +381,7 @@ form {
   flex-wrap: wrap;
   flex-direction: column;
 }
-
-.full-row {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-
-.half-row {
-  display: flex;
-  width: 48%;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
+ 
 .spacing {
   margin-right: 2.5%;
 }
@@ -346,34 +397,7 @@ label {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.checkbox {
-  margin-top: 10px;
-}
-.checkbox > label {
-  margin: 0 10px;
-  font-weight: normal;
-}
-
-.checkImage {
-  position: relative;
-  width: 180px;
-  display: flex; 
-}
-.cursoImgLogo {  
-  width: 100%;
-  max-height: 60px; 
-  object-fit: contain;
-  align-self: flex-start;
-}
-.divImgLogo {   
-  height: 60px;  
-}
-
-.chkCursos {
-  align-self: center; 
-  height: 20px;
-  margin-right: 20px;
-}
+ 
 .valor {
   font-weight: normal;
 }
@@ -405,7 +429,7 @@ select {
   -moz-border-radius: 5px;
   border-radius: 5px;
   color: black;
-  padding: 3%;
+  padding: 2.2%;
   cursor: pointer;
   text-align: center;
   font-size: 0.9rem;
@@ -430,5 +454,16 @@ select {
 
 .button:hover {
   opacity: 0.8;
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .rowCard {
+    justify-content: center;
+  }
+  .card {
+    width: 80%;
+    min-width: 230px;
+    max-width: 255px;
+  }
 }
 </style>
