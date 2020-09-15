@@ -138,6 +138,9 @@ export default {
     margin-right: 25px !important; 
     opacity: 1;
   }
+  .header-menu {
+    padding-left: 0rem;
+  }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 992px) {
