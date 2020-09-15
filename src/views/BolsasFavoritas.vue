@@ -423,13 +423,13 @@ select {
 }
 
 .button {
-  min-width: 100px;
+  min-width: 105px;
   -webkit-border-radius: 5px;
   background-color: transparent;
   -moz-border-radius: 5px;
   border-radius: 5px;
   color: black;
-  padding: 2.2%;
+  padding: 2%;
   cursor: pointer;
   text-align: center;
   font-size: 0.9rem;
@@ -466,7 +466,7 @@ select {
     max-width: 255px;
   }
   .modal-content {
-    zoom: 70%;
+    zoom: 78%;
   }
 }
 </style>
