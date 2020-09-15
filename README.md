@@ -29,6 +29,9 @@ css como solicitado na descrição.
 ## Repositório
 * https://github.com/JonyAlan/Front-End-da-Quero
 
+## Publicado
+* https://5f6040213a680751e3a22c84--keen-ardinghelli-935cc0.netlify.app/#/
+
 ## Tempo de desenvolvimento
 * 22h
 
