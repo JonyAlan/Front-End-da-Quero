@@ -30,7 +30,7 @@ css como solicitado na descrição.
 * https://github.com/JonyAlan/Front-End-da-Quero
 
 ## Publicado
-* https://5f6040213a680751e3a22c84--keen-ardinghelli-935cc0.netlify.app/#/
+* https://5f60bd2668e74a1f5dd3d859--keen-ardinghelli-935cc0.netlify.app/#/
 
 ## Tempo de desenvolvimento
 * 22h
