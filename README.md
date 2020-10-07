@@ -1,5 +1,5 @@
 
-# Projeto Quero-bolsa desafio frontend
+# Projeto Quero-bolsa - frontend em Vue.js
 
 
 ## Comentários
